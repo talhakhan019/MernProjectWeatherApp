@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {{>headtag}}
+</head>
+<body>
+    {{>navbar}}
+    <div class="container-fluid main_weather">
+        <div class="row">
+            <div class="col-md-10 col-10 mx-auto">
+                <div class="main_content">
+                    <form class="temp_form">
+                        <input type="text" id="weather_location" placeholder="Enter your city" value="Islamabad">
+                        <input type="submit" value="Search" id="submitBtn" >
+                    </form>
+                </div>
+                <div class="tempInformation">
+                    <div class="top_layer">
+                        <span id="day">Tuesday</span>
+                        <span id="today_date">13 OCT</span>
+                    </div>
+                    <div class="main_layer ">
+                        <span id="city_name">Get Output Here</span>
+                        <div class="middle_layer data_hide ">
+                            <span id="temp">
+                                
+                            </span>
+                            <span id="temp_status"><i class="fa fa-cloud"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{>footer}}
+    <script>
+        const getcurDay = () => {
+            const weekday = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+            let currentTime = new Date();
+            let day = weekday[currentTime.getDay()];
+            return day;
+        }
+        const getcurTime = () => {
+            const  months = ["Jan","Feb","Mar","Apr","May","June","July","Aug","Sep","Oct","Nov","Dec"];
+            let now = new Date();
+            var date = now.getDate();
+            var month = months[now.getMonth()];
+
+            return `${date} ${month} `;
+        } 
+
+        const day = document.getElementById('day');
+        const today_date = document.getElementById('today_date');
+
+        day.innerText = `${getcurDay()}`;
+        today_date.innerText = `${getcurTime()}`;
+         
+    </script>
+    <script src="js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
